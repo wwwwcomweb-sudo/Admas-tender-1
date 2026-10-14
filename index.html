@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admas Tender Portal</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #333;
+    line-height: 1.6;
+}
+
+button, input, select, textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    color: #003366;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.section-description {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background: #003366;
+    color: white;
+    border: none;
+    padding: 11px 20px;
+    border-radius: 5px;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #0878c9;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* LOGIN AND REGISTER */
+
+#loginPage,
+#registerPage {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #003366, #0878c9);
+}
+
+.login-box {
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px #0003;
+}
+
+.login-box h1 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 8px;
+}
+
+.login-box > p {
+    text-align: center;
+    margin: 10px 0 20px;
+    color: #666;
+}
+
+.login-box label,
+.sell-form label {
+    display: block;
+    margin: 12px 0 5px;
+    font-weight: bold;
+}
+
+.login-box input,
+.sell-form input,
+.sell-form select,
+.sell-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-box button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.login-box a {
+    color: #0878c9;
+    font-weight: bold;
+}
+
+.message {
+    text-align: center;
+    margin-top: 12px;
+    overflow-wrap: anywhere;
+}
+
+/* HEADER */
+
+header {
+    background: #003366;
+    color: white;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    width: 92%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    color: #ffcc00;
+}
+
+.logout-btn {
+    background: #c62828;
+    color: white;
+    border: 0;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #003366, #0878c9);
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 0 auto 25px;
+    font-size: 18px;
+}
+
+.hero .btn {
+    background: #ffcc00;
+    color: #003366;
+    font-weight: bold;
+    margin: 5px;
+}
+
+/* GENERAL SECTIONS */
+
+.about,
+.tenders,
+.products-section {
+    padding: 55px 0;
+    background: white;
+}
+
+.about-content {
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+}
+
+.about-content p {
+    margin: 10px 0;
+}
+
+.services,
+.details,
+.sell-section {
+    padding: 55px 0;
+}
+
+.services-grid,
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.service-card,
+.product-card,
+.details-box,
+.sell-form {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px #00000012;
+}
+
+.service-card {
+    text-align: center;
+}
+
+.service-card .icon,
+.product-icon {
+    font-size: 40px;
+}
+
+.service-card h3,
+.product-card h3,
+.details-box h3 {
+    color: #003366;
+    margin: 10px 0;
+}
+
+/* TENDER TABLE */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.tender-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.tender-table th,
+.tender-table td {
+    padding: 13px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.tender-table th {
+    background: #003366;
+    color: white;
+}
+
+.tender-table tr:nth-child(even) {
+    background: #f4f7fb;
+}
+
+.status {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.open-status {
+    background: #d4edda;
+    color: #155724;
+}
+
+.closed-status {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* TENDER DETAILS */
+
+.details-box {
+    max-width: 800px;
+    margin: auto;
+}
+
+.details-box p {
+    margin-bottom: 8px;
+}
+
+.details-box ul {
+    padding-left: 25px;
+    margin: 10px 0 20px;
+}
+
+/* PRODUCTS */
+
+.product-search {
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto 30px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.product-card {
+    text-align: center;
+    border: 1px solid #e1e6ed;
+    transition: transform .3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card p {
+    margin-bottom: 10px;
+}
+
+.product-price {
+    color: #16803c;
+    font-size: 21px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.product-category {
+    color: #666;
+    font-size: 13px;
+}
+
+/* SELL PRODUCT */
+
+.sell-section {
+    background: #f4f7fb;
+}
+
+.sell-form {
+    max-width: 550px;
+    margin: auto;
+}
+
+.sell-form button {
+    margin-top: 18px;
+    width: 100%;
+}
+
+/* CONTACT US - NEW DESIGN */
+
+#contact {
+    padding: 65px 20px;
+    background: #eaf0f6;
+}
+
+.contact-card {
+    max-width: 850px;
+    margin: auto;
+    padding: 45px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(0, 35, 75, 0.10);
+}
+
+.contact-card h2 {
+    color: #003366;
+    font-size: 34px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.contact-information {
+    margin-bottom: 30px;
+}
+
+.contact-information p {
+    margin: 13px 0;
+    font-size: 16px;
+    overflow-wrap: anywhere;
+}
+
+.contact-information strong {
+    color: #003366;
+}
+
+.contact-divider {
+    height: 1px;
+    background: #e1e7ee;
+    border: none;
+    margin: 25px 0;
+}
+
+.contact-card h3 {
+    color: #003366;
+    font-size: 23px;
+    margin-bottom: 18px;
+}
+
+.contact-form label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin: 15px 0 7px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccd5df;
+    border-radius: 7px;
+    outline: none;
+    background: #fff;
+    color: #333;
+    transition: border-color .3s, box-shadow .3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #0878c9;
+    box-shadow: 0 0 0 3px rgba(8, 120, 201, 0.12);
+}
+
+.contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.contact-submit {
+    width: 100%;
+    display: block;
+    margin-top: 22px;
+    padding: 15px;
+    border: none;
+    border-radius: 7px;
+    background: #003366;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background .3s;
+}
+
+.contact-submit:hover {
+    background: #0878c9;
+}
+
+#contactStatus {
+    margin-top: 15px;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+/* FOOTER */
+
+footer {
+    background: #003366;
+    color: white;
+    padding: 25px 15px;
+    text-align: center;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media(max-width: 850px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .contact-card {
+        padding: 30px;
+    }
+}
+
+@media(max-width: 600px) {
+    .hero {
+        min-height: 350px;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .section-title {
+        font-size: 25px;
+    }
+
+    .nav-links {
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .tender-table th,
+    .tender-table td {
+        padding: 9px;
+        font-size: 12px;
+    }
+
+    .login-box {
+        padding: 25px;
+    }
+
+    .contact-card {
+        padding: 23px 18px;
+        border-radius: 12px;
+    }
+
+    .contact-card h2 {
+        font-size: 28px;
+    }
+
+    .contact-card h3 {
+        font-size: 21px;
+    }
+
+    .contact-information p {
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN PAGE -->
+
+<div id="loginPage">
+    <div class="login-box">
+
+        <h1>Admas Tender</h1>
+        <p>Login to access the Tender Portal</p>
+
+        <form id="loginForm">
+
+            <label for="username">Username</label>
+            <input type="text" id="username"
+                   placeholder="Enter username"
+                   required autocomplete="username">
+
+            <label for="password">Password</label>
+            <input type="password" id="password"
+                   placeholder="Enter password"
+                   required autocomplete="current-password">
+
+            <button type="submit" class="btn">Login</button>
+
+        </form>
+
+        <p id="loginMessage" class="message" aria-live="polite"></p>
+
+        <p>
+            Don't have an account?
+            <a href="#" id="showRegister">Create Account</a>
+        </p>
+
+    </div>
+</div>
+
+<!-- REGISTER PAGE -->
+
+<div id="registerPage" class="hidden">
+    <div class="login-box">
+
+        <h1>Create Account</h1>
+        <p>Register for Admas Tender Portal</p>
+
+        <form id="registerForm">
+
+            <label for="newName">Full Name</label>
+            <input type="text" id="newName"
+                   placeholder="Enter full name"
+                   required autocomplete="name">
+
+            <label for="newUsername">Username</label>
+            <input type="text" id="newUsername"
+                   placeholder="Choose username"
+                   required autocomplete="username">
+
+            <label for="newEmail">Email Address</label>
+            <input type="email" id="newEmail"
+                   placeholder="Enter email"
+                   required autocomplete="email">
+
+            <label for="newPassword">Password</label>
+            <input type="password" id="newPassword"
+                   placeholder="Create password (minimum 6 characters)"
+                   minlength="6" required autocomplete="new-password">
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword"
+                   placeholder="Confirm password"
+                   minlength="6" required autocomplete="new-password">
+
+            <button type="submit" class="btn">Create Account</button>
+
+        </form>
+
+        <p id="registerMessage" class="message" aria-live="polite"></p>
+
+        <p>
+            Already have an account?
+            <a href="#" id="showLogin">Login</a>
+        </p>
+
+    </div>
+</div>
+
+<!-- MAIN WEBSITE -->
+
+<div id="website" class="hidden">
+
+<header>
+    <nav class="navbar">
+
+        <div class="logo">Admas Tender</div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#tenders">Tenders</a></li>
+            <li><a href="#details">Details</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#sell">Sell Product</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button class="logout-btn" id="logoutButton">Logout</button></li>
+        </ul>
+
+    </nav>
+</header>
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+    <div>
+
+        <h1>Welcome to Admas Tender Portal</h1>
+
+        <p>
+            Discover tender opportunities, explore products,
+            check prices, and connect with suppliers through
+            our online portal.
+        </p>
+
+        <a href="#tenders" class="btn">Explore Tenders</a>
+        <a href="#products" class="btn">View Products</a>
+
+    </div>
+</section>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+    <div class="container">
+
+        <h2 class="section-title">About Us</h2>
+
+        <div class="about-content">
+
+            <p>
+                Admas Tender Portal is a demonstration website
+                designed to display tender opportunities and
+                products for sale in one place.
+            </p>
+
+            <p>
+                The website helps users explore tender information,
+                view sample product prices, and submit product information.
+            </p>
+
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+
+<section class="services" id="services">
+    <div class="container">
+
+        <h2 class="section-title">Our Services</h2>
+
+        <p class="section-description">
+            Explore the services available on our portal.
+        </p>
+
+        <div class="services-grid">
+
+            <div class="service-card">
+                <div class="icon">📋</div>
+                <h3>Tender Information</h3>
+                <p>View available tenders and their requirements.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="icon">🛒</div>
+                <h3>Buy Products</h3>
+                <p>Explore products and view their listed prices.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="icon">💼</div>
+                <h3>Sell Products</h3>
+                <p>Submit product details for demonstration.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="icon">📞</div>
+                <h3>Customer Support</h3>
+                <p>Use the contact form to prepare a message.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- TENDERS -->
+
+<section class="tenders" id="tenders">
+    <div class="container">
+
+        <h2 class="section-title">Available Tenders</h2>
+
+        <p class="section-description">
+            Sample tender opportunities for this assignment.
+        </p>
+
+        <div class="table-wrapper">
+
+            <table class="tender-table">
+
+                <thead>
+                    <tr>
+                        <th>Tender ID</th>
+                        <th>Tender Name</th>
+                        <th>Category</th>
+                        <th>Closing Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>AT001</td>
+                        <td>IT Equipment Supply</td>
+                        <td>Information Technology</td>
+                        <td>2027-01-15</td>
+                        <td><span class="status open-status">Open</span></td>
+                        <td><button class="btn" data-tender="AT001">View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>AT002</td>
+                        <td>Office Furniture Supply</td>
+                        <td>Furniture</td>
+                        <td>2027-01-20</td>
+                        <td><span class="status open-status">Open</span></td>
+                        <td><button class="btn" data-tender="AT002">View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>AT003</td>
+                        <td>Cleaning Service</td>
+                        <td>Services</td>
+                        <td>2026-01-01</td>
+                        <td><span class="status closed-status">Closed</span></td>
+                        <td><button class="btn" data-tender="AT003">View</button></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</section>
+
+<!-- TENDER DETAILS -->
+
+<section class="details" id="details">
+    <div class="container">
+
+        <h2 class="section-title">Tender Details</h2>
+
+        <p class="section-description">
+            Select a tender from the table to see its details.
+        </p>
+
+        <div class="details-box" id="tenderDetails">
+
+            <h3>IT Equipment Supply</h3>
+            <p><strong>Tender ID:</strong> AT001</p>
+            <p><strong>Category:</strong> Information Technology</p>
+            <p><strong>Opening Date:</strong> 2026-10-15</p>
+            <p><strong>Closing Date:</strong> 2027-01-15</p>
+
+            <h3>Requirements</h3>
+
+            <ul>
+                <li>Valid business license.</li>
+                <li>Tax registration certificate.</li>
+                <li>Relevant product information.</li>
+                <li>Submit documents before the closing date.</li>
+            </ul>
+
+            <button class="btn" id="applyDefault">Apply for Tender</button>
+
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTS -->
+
+<section class="products-section" id="products">
+    <div class="container">
+
+        <h2 class="section-title">Products for Sale</h2>
+
+        <p class="section-description">
+            Browse products and compare their sample prices.
+        </p>
+
+        <input type="search"
+               id="productSearch"
+               class="product-search"
+               placeholder="Search products...">
+
+        <div class="products-container" id="productsContainer">
+
+            <div class="product-card">
+                <div class="product-icon">💻</div>
+                <h3>Laptop Computer</h3>
+                <p>Core i5 laptop for office and education.</p>
+                <p class="product-category">Category: Electronics</p>
+                <div class="product-price">ETB 35,000</div>
+                <button class="btn buy-button"
+                        data-name="Laptop Computer"
+                        data-price="35000">Buy Now</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">🪑</div>
+                <h3>Office Chair</h3>
+                <p>Comfortable chair for office use.</p>
+                <p class="product-category">Category: Office Furniture</p>
+                <div class="product-price">ETB 4,500</div>
+                <button class="btn buy-button"
+                        data-name="Office Chair"
+                        data-price="4500">Buy Now</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">🖨️</div>
+                <h3>Printer</h3>
+                <p>Printer for documents and office work.</p>
+                <p class="product-category">Category: Electronics</p>
+                <div class="product-price">ETB 12,000</div>
+                <button class="btn buy-button"
+                        data-name="Printer"
+                        data-price="12000">Buy Now</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">🖥️</div>
+                <h3>Desktop Computer</h3>
+                <p>Desktop computer for office work.</p>
+                <p class="product-category">Category: Electronics</p>
+                <div class="product-price">ETB 28,000</div>
+                <button class="btn buy-button"
+                        data-name="Desktop Computer"
+                        data-price="28000">Buy Now</button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SELL PRODUCT -->
+
+<section class="sell-section" id="sell">
+    <div class="container">
+
+        <h2 class="section-title">Sell Your Product</h2>
+
+        <p class="section-description">
+            Enter your product information to list it for sale.
+        </p>
+
+        <form class="sell-form" id="sellForm">
+
+            <label for="sellerName">Seller Name</label>
+            <input id="sellerName" required>
+
+            <label for="newProductName">Product Name</label>
+            <input id="newProductName" required>
+
+            <label for="newProductPrice">Price in ETB</label>
+            <input type="number" id="newProductPrice" min="1" required>
+
+            <label for="newProductCategory">Product Category</label>
+            <select id="newProductCategory" required>
+                <option value="">Select Category</option>
+                <option>Electronics</option>
+                <option>Office Furniture</option>
+                <option>Other</option>
+            </select>
+
+            <label for="newProductDescription">Product Description</label>
+            <textarea id="newProductDescription" rows="4" required></textarea>
+
+            <button type="submit" class="btn">Submit Product</button>
+
+            <p id="sellMessage" class="message" aria-live="polite"></p>
+
+        </form>
+    </div>
+</section>
+
+<!-- CONTACT US - UPDATED DESIGN -->
+
+<section id="contact">
+    <div class="container">
+
+        <div class="contact-card">
+
+            <h2>Contact Us</h2>
+
+            <div class="contact-information">
+
+                <p>
+                    <strong>Organization:</strong>
+                    Admas Tender Portal
+                </p>
+
+                <p>
+                    <strong>Email:</strong>
+                    info@admastender.com
+                </p>
+
+                <p>
+                    <strong>Phone:</strong>
+                    +251 900 000 000
+                </p>
+
+                <p>
+                    <strong>Location:</strong>
+                    Addis Ababa, Ethiopia
+                </p>
+
+            </div>
+
+            <hr class="contact-divider">
+
+            <h3>Send us a Message</h3>
+
+            <form class="contact-form" id="contactForm">
+
+                <label for="contactName">Your Name</label>
+                <input
+                    type="text"
+                    id="contactName"
+                    placeholder="Enter your name"
+                    required
+                >
+
+                <label for="contactEmail">Your Email</label>
+                <input
+                    type="email"
+                    id="contactEmail"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <label for="contactMessage">Your Message</label>
+                <textarea
+                    id="contactMessage"
+                    placeholder="Write your message here..."
+                    required
+                ></textarea>
+
+                <button type="submit" class="contact-submit">
+                    Send Message
+                </button>
+
+                <p id="contactStatus" aria-live="polite"></p>
+
+            </form>
+
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+    <p>&copy; 2026 Admas Tender Portal. All rights reserved.</p>
+    <p>Demonstration website for an educational assignment.</p>
+</footer>
+
+</div>
+
+<script>
+
+/* PAGE ELEMENTS */
+
+const loginPage = document.getElementById("loginPage");
+const registerPage = document.getElementById("registerPage");
+const website = document.getElementById("website");
+
+/* SHOW PAGES */
+
+function showLogin() {
+    registerPage.classList.add("hidden");
+    website.classList.add("hidden");
+    loginPage.classList.remove("hidden");
+}
+
+function showRegister() {
+    loginPage.classList.add("hidden");
+    website.classList.add("hidden");
+    registerPage.classList.remove("hidden");
+}
+
+function showWebsite() {
+    loginPage.classList.add("hidden");
+    registerPage.classList.add("hidden");
+    website.classList.remove("hidden");
+    window.scrollTo(0, 0);
+}
+
+/* REGISTER AND LOGIN NAVIGATION */
+
+document.getElementById("showRegister").addEventListener("click", function(e) {
+    e.preventDefault();
+    showRegister();
+});
+
+document.getElementById("showLogin").addEventListener("click", function(e) {
+    e.preventDefault();
+    showLogin();
+});
+
+/* REGISTER ACCOUNT */
+
+document.getElementById("registerForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("newName").value.trim();
+    const username = document.getElementById("newUsername").value.trim().toLowerCase();
+    const email = document.getElementById("newEmail").value.trim();
+    const password = document.getElementById("newPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const message = document.getElementById("registerMessage");
+
+    if (password.length < 6) {
+        message.style.color = "red";
+        message.textContent = "Password must contain at least 6 characters.";
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        message.style.color = "red";
+        message.textContent = "Passwords do not match.";
+        return;
+    }
+
+    try {
+        const accounts = JSON.parse(
+            localStorage.getItem("admasAccounts") || "[]"
+        );
+
+        if (accounts.some(account => account.username === username)) {
+            message.style.color = "red";
+            message.textContent = "This username already exists. Please choose another.";
+            return;
+        }
+
+        accounts.push({
+            name: name,
+            username: username,
+            email: email,
+            password: password
+        });
+
+        localStorage.setItem("admasAccounts", JSON.stringify(accounts));
+
+        this.reset();
+
+        message.style.color = "green";
+        message.textContent = "Account created successfully. You can now login.";
+
+        setTimeout(function() {
+            message.textContent = "";
+            showLogin();
+            document.getElementById("username").value = username;
+        }, 1000);
+
+    } catch (error) {
+        message.style.color = "red";
+        message.textContent = "Unable to save account in this browser.";
+    }
+});
+
+/* LOGIN */
+
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value.trim().toLowerCase();
+    const password = document.getElementById("password").value;
+    const message = document.getElementById("loginMessage");
+
+    try {
+        const accounts = JSON.parse(
+            localStorage.getItem("admasAccounts") || "[]"
+        );
+
+        const account = accounts.find(item =>
+            item.username === username &&
+            item.password === password
+        );
+
+        if (account) {
+            sessionStorage.setItem("admasLoggedIn", "true");
+            sessionStorage.setItem("admasName", account.name);
+
+            message.textContent = "";
+            showWebsite();
+
+        } else {
+            message.style.color = "red";
+            message.textContent =
+                "Incorrect username or password. Register first if you do not have an account.";
+        }
+
+    } catch (error) {
+        message.style.color = "red";
+        message.textContent = "Unable to read account information.";
+    }
+});
+
+/* LOGOUT */
+
+document.getElementById("logoutButton").addEventListener("click", function() {
+    sessionStorage.removeItem("admasLoggedIn");
+    sessionStorage.removeItem("admasName");
+
+    document.getElementById("loginForm").reset();
+    document.getElementById("loginMessage").textContent = "";
+
+    showLogin();
+});
+
+/* TENDER DATA */
+
+const tenderData = {
+    AT001: {
+        name: "IT Equipment Supply",
+        category: "Information Technology",
+        opening: "2026-10-15",
+        closing: "2027-01-15",
+        status: "Open",
+        requirements: [
+            "Valid business license.",
+            "Tax registration certificate.",
+            "Relevant product information.",
+            "Submit documents before the closing date."
+        ]
+    },
+
+    AT002: {
+        name: "Office Furniture Supply",
+        category: "Furniture",
+        opening: "2026-10-20",
+        closing: "2027-01-20",
+        status: "Open",
+        requirements: [
+            "Valid business license.",
+            "Tax registration certificate.",
+            "Furniture product specifications.",
+            "Submit the offer before the closing date."
+        ]
+    },
+
+    AT003: {
+        name: "Cleaning Service",
+        category: "Services",
+        opening: "2025-12-01",
+        closing: "2026-01-01",
+        status: "Closed",
+        requirements: [
+            "Valid business license.",
+            "Relevant service experience.",
+            "Required supporting documents."
+        ]
+    }
+};
+
+let selectedTender = "AT001";
+
+/* VIEW TENDER DETAILS */
+
+function viewTender(id) {
+    const tender = tenderData[id];
+
+    if (!tender) return;
+
+    selectedTender = id;
+
+    const box = document.getElementById("tenderDetails");
+    box.replaceChildren();
+
+    function addText(tag, text) {
+        const element = document.createElement(tag);
+        element.textContent = text;
+        box.appendChild(element);
+        return element;
+    }
+
+    addText("h3", tender.name);
+    addText("p", "Tender ID: " + id);
+    addText("p", "Category: " + tender.category);
+    addText("p", "Opening Date: " + tender.opening);
+    addText("p", "Closing Date: " + tender.closing);
+    addText("p", "Status: " + tender.status);
+    addText("h3", "Requirements");
+
+    const list = document.createElement("ul");
+
+    tender.requirements.forEach(function(text) {
+        const li = document.createElement("li");
+        li.textContent = text;
+        list.appendChild(li);
+    });
+
+    box.appendChild(list);
+
+    if (tender.status === "Open") {
+        const button = document.createElement("button");
+
+        button.className = "btn";
+        button.textContent = "Apply for Tender";
+
+        button.addEventListener("click", function() {
+            applyTender(id);
+        });
+
+        box.appendChild(button);
+
+    } else {
+        addText("p", "This tender is closed.");
+    }
+
+    document.getElementById("details").scrollIntoView();
+}
+
+/* TENDER BUTTONS */
+
+document.querySelectorAll("[data-tender]").forEach(function(button) {
+    button.addEventListener("click", function() {
+        viewTender(this.dataset.tender);
+    });
+});
+
+document.getElementById("applyDefault").addEventListener("click", function() {
+    applyTender(selectedTender);
+});
+
+/* APPLY FOR TENDER */
+
+function applyTender(id) {
+    const tender = tenderData[id];
+
+    if (!tender || tender.status !== "Open") {
+        alert("This tender is not currently open.");
+        return;
+    }
+
+    alert(
+        "You selected: " + tender.name +
+        "\nTender ID: " + id +
+        "\n\nDemonstration only. A real application requires a backend system."
+    );
+}
+
+/* BUY PRODUCT */
+
+function buyProduct(name, price) {
+    alert(
+        "Product: " + name +
+        "\nPrice: ETB " + Number(price).toLocaleString("en-US") +
+        "\n\nDemonstration only. Contact the seller to complete your purchase."
+    );
+}
+
+document.querySelectorAll(".buy-button").forEach(function(button) {
+    button.addEventListener("click", function() {
+        buyProduct(this.dataset.name, Number(this.dataset.price));
+    });
+});
+
+/* SEARCH PRODUCTS */
+
+function searchProducts() {
+    const query = document.getElementById("productSearch")
+        .value.trim().toLowerCase();
+
+    document.querySelectorAll(".product-card").forEach(function(card) {
+        card.style.display =
+            card.textContent.toLowerCase().includes(query) ? "" : "none";
+    });
+}
+
+document.getElementById("productSearch")
+    .addEventListener("input", searchProducts);
+
+/* SELL PRODUCT */
+
+document.getElementById("sellForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const seller = document.getElementById("sellerName").value.trim();
+    const name = document.getElementById("newProductName").value.trim();
+    const priceValue = Number(document.getElementById("newProductPrice").value);
+    const categoryValue = document.getElementById("newProductCategory").value;
+    const descriptionValue = document.getElementById("newProductDescription").value.trim();
+
+    if (
+        !seller ||
+        !name ||
+        !categoryValue ||
+        !descriptionValue ||
+        !Number.isFinite(priceValue) ||
+        priceValue <= 0
+    ) {
+        alert("Please enter valid product information.");
+        return;
+    }
+
+    const card = document.createElement("div");
+    card.className = "product-card";
+
+    const icon = document.createElement("div");
+    icon.className = "product-icon";
+    icon.textContent = "📦";
+    card.appendChild(icon);
+
+    const title = document.createElement("h3");
+    title.textContent = name;
+    card.appendChild(title);
+
+    const description = document.createElement("p");
+    description.textContent = descriptionValue;
+    card.appendChild(description);
+
+    const category = document.createElement("p");
+    category.className = "product-category";
+    category.textContent = "Category: " + categoryValue;
+    card.appendChild(category);
+
+    const price = document.createElement("div");
+    price.className = "product-price";
+    price.textContent = "ETB " + priceValue.toLocaleString("en-US");
+    card.appendChild(price);
+
+    const button = document.createElement("button");
+    button.className = "btn";
+    button.textContent = "Buy Now";
+
+    button.addEventListener("click", function() {
+        buyProduct(name, priceValue);
+    });
+
+    card.appendChild(button);
+
+    document.getElementById("productsContainer").appendChild(card);
+
+    const message = document.getElementById("sellMessage");
+
+    message.style.color = "green";
+    message.textContent =
+        "Thank you, " + seller + "! Your product was added to this page.";
+
+    this.reset();
+
+    searchProducts();
+
+    document.getElementById("products").scrollIntoView();
+});
+
+/* CONTACT FORM */
+
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("contactName").value.trim();
+    const email = document.getElementById("contactEmail").value.trim();
+    const message = document.getElementById("contactMessage").value.trim();
+    const status = document.getElementById("contactStatus");
+
+    if (!name || !email || !message) {
+        status.style.color = "red";
+        status.textContent = "Please complete all fields.";
+        return;
+    }
+
+    status.style.color = "green";
+    status.textContent =
+        "Thank you, " + name +
+        "! Your message has been prepared. This demonstration website does not send messages to a server.";
+
+    this.reset();
+});
+
+/* KEEP WEBSITE PRIVATE UNTIL LOGIN */
+
+if (sessionStorage.getItem("admasLoggedIn") === "true") {
+    showWebsite();
+} else {
+    showLogin();
+}
+
+</script>
+
+</body>
+</html>
